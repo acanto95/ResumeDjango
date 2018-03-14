@@ -96,7 +96,7 @@ $.getJSON("http://localhost:8000/comments/", function(json){
               "<div>" + "<h3> Id: "+ comment.id +"</h3>"+
                "<div>" + "<h3> Name: "+ comment.commentname +"</h3>"+
                "<h3> Comment: " + comment.comment + "</h3>"+
-                  "<button type='delete' onclick='deleteData("+ comment.id+ ")'>Delete</button></div>";
+                  "<button type='delete' onclick='deleteData("+ comment.id+ ")'>Delete</button></div>";                  ;
              })
 
 
@@ -139,6 +139,44 @@ $.ajax({
 /* now call ur function by passing the above values */
 
 });
+}
+function getCommentId(commentid){ 
+var cmid = commentid;
+cmid = JSON.stringify(cmid);
+cmid = btoa(cmid);
+localStorage.setItem('_commentid', cmid);
+window.location.replace("/home/canto/Documents/efficenty/updatecomment.html");
+
+
+}
+
+function loadData(commentname,comment) {
+   var commentid = localStorage.getItem('_commentid');
+   if (!commentid) return false;
+   localStorage.removeItem('_commentid');
+   //decodes a string data encoded using base-64
+   commentid = atob(commentid);
+   //parses to Object the JSON string
+   commentid = JSON.parse(commentid);
+   //do what you need with the Object
+
+
+
+   $.ajax({
+                 type:"PUT",
+                 url:"http://localhost:8000/comments/" + commentid +"/",
+                 data: {
+                        'commentname': commentname,
+                        'comment': comment, // from form
+                        },
+                  dataType: "json",
+                 success: (result) => {
+                console.log("success")
+            },
+/* some other fields */
+/* now call ur function by passing the above values */
+});
+
 }
 
 
