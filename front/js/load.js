@@ -2,7 +2,7 @@
 
 function cargarDatos(){
   var myjson;
-$.getJSON("http://18.219.220.34:8000/maininfo/", function(json){
+$.getJSON("http://18.216.46.196/maininfo/", function(json){
     myjson = json;
     $("#infoname").text(json[0].name);
     $("#birthday").text(json[0].birthday);
@@ -10,7 +10,7 @@ $.getJSON("http://18.219.220.34:8000/maininfo/", function(json){
     $("#phonenum").text(json[0].phonenum);
 }),
 
-$.getJSON("http://18.219.220.34:8000/experienceinfo/", function(json){
+$.getJSON("http://18.216.46.196/experienceinfo/", function(json){
   comments = json;
     var table ="<h3><br><center><table class ='info-box'>" +
              "<tr>" +
@@ -37,7 +37,7 @@ $.getJSON("http://18.219.220.34:8000/experienceinfo/", function(json){
 }),
 
 
-$.getJSON("http://18.219.220.34:8000/skillsinfo/", function(json){
+$.getJSON("http://18.216.46.196/skillsinfo/", function(json){
   comments = json;
     var table ="<h3><br><center><table class ='info-box'>" +
              "<tr>" +
@@ -60,7 +60,7 @@ $.getJSON("http://18.219.220.34:8000/skillsinfo/", function(json){
 }),
 
 
-$.getJSON("http://18.219.220.34:8000/proyectsinfo/", function(json){
+$.getJSON("http://18.216.46.196/proyectsinfo/", function(json){
   comments = json;
     var table ="<h3><br><center><table class ='info-box'>" +
              "<tr>" +
@@ -86,7 +86,7 @@ $.getJSON("http://18.219.220.34:8000/proyectsinfo/", function(json){
              $("#proyectsinfo").append(table);
 }),
 
-$.getJSON("http://18.219.220.34:8000/comments/", function(json){
+$.getJSON("http://18.216.46.196/comments/", function(json){
   comments = json;
              //$("#comments").append(tableHeader);
   var table;
@@ -113,7 +113,7 @@ var comment=document.getElementById('comment').value;
 
 $.ajax({
                  type:"POST",
-                 url:"http://18.219.220.34:8000/comments/",
+                 url:"http://18.216.46.196/comments/",
                  data: {
                         'commentname': commentname,
                         'comment': comment // from form
@@ -131,7 +131,7 @@ $.ajax({
 function deleteData(commentid){ 
 $.ajax({
                  type:"delete",
-                 url:"http://18.219.220.34:8000/comments/" + commentid+ "/" ,
+                 url:"http://18.216.46.196/comments/" + commentid+ "/" ,
                  success: function(){
                      window.location.replace("landingdel.html");
                  }
@@ -164,7 +164,7 @@ function loadData(commentname,comment) {
 
    $.ajax({
                  type:"PUT",
-                 url:"http://18.219.220.34:8000/comments/" + commentid +"/",
+                 url:"http://18.216.46.196/comments/" + commentid +"/",
                  data: {
                         'commentname': commentname,
                         'comment': comment, // from form
