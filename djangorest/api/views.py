@@ -59,7 +59,7 @@ class CommentsList(APIView):
         serializer = CommentsSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return HttpResponseRedirect("http://example.com/")
+            return HttpResponseRedirect("http://18.216.46.196:5000")
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CommentsDetail(APIView):
