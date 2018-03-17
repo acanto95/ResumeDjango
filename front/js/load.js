@@ -133,7 +133,8 @@ $.ajax({
                  type:"delete",
                  url:"http://18.216.46.196/comments/" + commentid+ "/" ,
                  success: function(){
-                     window.location.replace("http://18.216.46.196:5000/landingdel.html");
+                  alert("comment deleted succesfully!");
+                     window.location.replace("http://18.216.46.196:5000");
                  }
 /* some other fields */
 /* now call ur function by passing the above values */
